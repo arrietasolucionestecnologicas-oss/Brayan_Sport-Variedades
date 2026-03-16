@@ -7,7 +7,7 @@ DESCRIPCIÓN: Módulo de conexión Fetch y gestor de sincronización Offline.
 
 export const API = {
     // URL de despliegue de Google Apps Script
-    URL: "https://script.google.com/macros/s/AKfycbzWEqQQTow3irxkTU4Y3CVJshtfjo1s2m1dwSicRihQ42_fArC6L9MAuQoUPUfzzXYS/exec",
+    URL: "https://script.google.com/macros/s/AKfycbwmqm1AYUcfDCxj2d24bRc7r3jpph24lFp9AHsopzLmIYm0Ca1AmosP_d6RuUgT4Dw/exec",
     
     async call(action, data = null) {
         const payload = { action: action, data: data };
