@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>App Comercial | Sistema de Gestión Modular</title>
+  <title>Bryan Sport | Sistema de Gestión Modular</title>
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#63B8FF">
   <link rel="icon" type="image/png" href="icon-192.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
   <style>
+    /* --- TEMA BRYAN SPORT: BLUE, BLACK & WHITE --- */
     :root { 
         --primary: #000000; 
-        --gold: #d4af37; 
-        --gold-hover: #b59020; 
+        --blue: #63B8FF; 
+        --blue-hover: #4A90E2; 
         --light: #f8f9fa; 
         --dark: #212529; 
-        --bg: #f4f4f9;
+        --bg: #f4f7f9;
         --s: #2ecc71; 
         --d: #e74c3c; 
     }
@@ -33,15 +34,15 @@
     }
 
     .header { 
-        background-color: var(--primary); 
-        color: white; 
+        background-color: var(--blue); 
+        color: var(--primary); 
         padding: 15px 20px; 
         border-radius: 0 0 20px 20px; 
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
         display: flex; 
         justify-content: space-between; 
         align-items: center; 
-        border-bottom: 2px solid var(--gold);
+        border-bottom: 3px solid var(--primary);
     }
 
     #offline-indicator {
@@ -70,15 +71,19 @@
         display: flex; justify-content: space-between; align-items: center;
         transition: 0.1s;
     }
-    .pos-row-lite:hover { transform: translateX(3px); border-left-color: var(--gold); }
-    .pos-row-lite.active { border-left-color: var(--gold); background: #fffcf5; border-right: 1px solid var(--gold); }
+    .pos-row-lite:hover { transform: translateX(3px); border-left-color: var(--blue); }
+    .pos-row-lite.active { border-left-color: var(--blue); background: #f0f8ff; border-right: 1px solid var(--blue); }
     .pos-row-lite .info { flex: 1; min-width: 0; padding-right: 10px; }
     .pos-row-lite .name { font-weight: 700; color: var(--primary); font-size: 0.95rem; margin-bottom: 2px; }
     .pos-row-lite .meta { font-size: 0.75rem; color: #888; }
-    .pos-row-lite .price { font-weight: 700; font-size: 1.1rem; color: var(--gold-hover); text-align: right; white-space: nowrap; }
+    .pos-row-lite .price { font-weight: 700; font-size: 1.1rem; color: var(--blue-hover); text-align: right; white-space: nowrap; }
     
-    .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; } }
+    .catalog-grid {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    }
+    @media (min-width: 768px) {
+        .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+    }
 
     .card-catalog {
         background: white; border-radius: 12px; overflow: hidden;
@@ -87,7 +92,7 @@
         display: flex; flex-direction: column;
         transition: 0.2s;
     }
-    .card-catalog:hover { border-color: var(--gold); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.15); }
+    .card-catalog:hover { border-color: var(--blue); box-shadow: 0 5px 15px rgba(99, 184, 255, 0.2); }
 
     .cat-img-box {
         height: 120px; width: 100%; background: #f8f9fa;
@@ -103,11 +108,11 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.2); cursor: pointer; color: var(--primary); font-size: 0.8rem;
         border: 1px solid transparent;
     }
-    .btn-edit-float:hover { color: var(--gold); border-color: var(--gold); }
+    .btn-edit-float:hover { color: var(--blue); border-color: var(--blue); }
 
     .cat-body { padding: 10px; flex: 1; display: flex; flex-direction: column; }
     .cat-title { font-weight: 700; font-size: 0.85rem; line-height: 1.2; margin-bottom: 5px; color: var(--primary); height: 34px; overflow: hidden; }
-    .cat-price { color: var(--gold-hover); font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+    .cat-price { color: var(--blue-hover); font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
     
     .cat-actions { 
         background: #fcfcfc; padding: 5px; 
@@ -119,7 +124,7 @@
         border-radius: 4px; padding: 2px 0; width: 100%;
         font-size: 0.7rem; text-align: center; cursor: pointer; transition: 0.2s;
     }
-    .btn-copy-mini:hover { background: var(--primary); color: var(--gold); border-color: var(--primary); }
+    .btn-copy-mini:hover { background: var(--primary); color: var(--blue); border-color: var(--primary); }
 
     .cotizador-panel { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
     .input-line { border:none; border-bottom: 2px solid #eee; width:100%; text-align:center; font-weight:bold; outline:none; color: var(--primary); }
@@ -130,17 +135,22 @@
     .card-k { background: white; border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: none; }
     
     .card-balance { 
-        padding: 25px; color: var(--gold); 
+        padding: 25px; color: var(--blue); 
         border-radius: 20px; text-align: center; 
         background: linear-gradient(135deg, #1a1a1a, #000000); 
         box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
-        margin-bottom: 15px; border: 1px solid var(--gold); 
+        margin-bottom: 15px; border: 1px solid var(--blue); 
     }
     .card-balance h1 { color: white; }
 
     .scroll-menu {
-        display: flex; overflow-x: auto; gap: 10px; padding-bottom: 5px;
-        margin-bottom: 15px; white-space: nowrap; -webkit-overflow-scrolling: touch; 
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; 
     }
     .scroll-menu::-webkit-scrollbar { display: none; }
     .scroll-menu > * { flex: 0 0 auto; }
@@ -158,7 +168,7 @@
     }
     .nav-btn i { font-size: 1.3rem; margin-bottom: 3px; }
     .nav-btn span { font-weight: 500; }
-    .nav-btn.active { color: var(--gold); transform: translateY(-2px); }
+    .nav-btn.active { color: var(--blue); transform: translateY(-2px); }
     .nav-btn.active span { font-weight: 700; color: var(--primary); }
 
     .file-upload-wrapper { position: relative; width: 100%; height: 200px; border: 2px dashed #ccc; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fafafa; overflow: hidden; }
@@ -168,8 +178,8 @@
 
     #loader { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.95); z-index:9999; display:flex; flex-direction:column; justify-content:center; align-items:center; }
 
-    .btn-bi { background: rgba(255,255,255,0.1); border:1px solid rgba(212, 175, 55, 0.5); color:var(--gold); border-radius: 8px; padding: 5px 10px; font-size: 0.8rem; text-decoration: none; transition: 0.2s; }
-    .btn-bi:hover { background: var(--gold); color: var(--primary); border-color: var(--gold); }
+    .btn-bi { background: rgba(255,255,255,0.2); border:1px solid var(--primary); color:var(--primary); border-radius: 8px; padding: 5px 10px; font-size: 0.8rem; text-decoration: none; transition: 0.2s; font-weight: bold; }
+    .btn-bi:hover { background: var(--primary); color: var(--blue); border-color: var(--primary); }
 
     #toast-container { position: fixed; top: 20px; right: 20px; z-index: 10000; }
 
@@ -182,33 +192,34 @@
     .card-debt .badge-debt { background: var(--d); color: white; font-size: 0.7rem; padding: 3px 8px; border-radius: 10px; }
 
     .btn-primary, .btn-dark { background-color: var(--primary) !important; border-color: var(--primary) !important; color: white !important; }
-    .btn-primary:hover, .btn-dark:hover { background-color: #333 !important; border-color: #333 !important; color: var(--gold) !important; }
-    .btn-info { background-color: var(--gold) !important; border-color: var(--gold) !important; color: var(--primary) !important; font-weight: bold; }
-    .btn-info:hover { background-color: var(--gold-hover) !important; border-color: var(--gold-hover) !important; }
+    .btn-primary:hover, .btn-dark:hover { background-color: #333 !important; border-color: #333 !important; color: var(--blue) !important; }
+    .btn-info { background-color: var(--blue) !important; border-color: var(--blue) !important; color: var(--primary) !important; font-weight: bold; }
+    .btn-info:hover { background-color: var(--blue-hover) !important; border-color: var(--blue-hover) !important; }
 
     .text-primary { color: var(--primary) !important; }
     .text-success { color: #198754 !important; } 
-    #btn-float-cart { background-color: var(--gold); color: var(--primary); border: none; }
-    .form-control:focus { box-shadow: 0 0 0 2px var(--gold) !important; border-color: var(--gold) !important; }
+    #btn-float-cart { background-color: var(--blue); color: var(--primary); border: none; font-weight: bold; }
+    .form-control:focus { box-shadow: 0 0 0 2px var(--blue) !important; border-color: var(--blue) !important; }
     
-    .nav-pills .nav-link.active { background-color: var(--primary) !important; color: var(--gold) !important; }
+    .nav-pills .nav-link.active { background-color: var(--primary) !important; color: var(--blue) !important; }
     .nav-pills .nav-link { color: var(--primary) !important; }
 
+    /* Estilos para pestañas de Inventario */
     .nav-tabs .nav-link { color: var(--dark); font-weight: 500; }
-    .nav-tabs .nav-link.active { color: var(--primary); font-weight: bold; border-bottom: 3px solid var(--gold); }
-    #modalEditItem { z-index: 6000 !important; }
+    .nav-tabs .nav-link.active { color: var(--primary); font-weight: bold; border-bottom: 3px solid var(--blue); }
   </style>
 </head>
 <body>
 
   <div id="loader"><div class="spinner-border text-dark" role="status"></div><h6 class="mt-3 text-muted fw-bold">Conectando al Servidor Central...</h6></div>
+  
   <div id="toast-container"></div>
 
   <div class="header">
-    <div><h4 class="m-0 fw-bold" style="color: var(--gold); letter-spacing: 1px;">SISTEMA COMERCIAL</h4><small class="opacity-75" id="user-display">Verificando Credenciales...</small></div>
+    <div><h4 class="m-0 fw-bold" style="color: var(--primary); letter-spacing: 1px; font-style: italic;">BRYAN SPORT</h4><small class="opacity-75" id="user-display" style="color: var(--primary); font-weight: 500;">Verificando Credenciales...</small></div>
     <div class="d-flex gap-2">
         <a class="btn-bi" href="dashboard.html"><i class="bi bi-graph-up-arrow"></i> Reportes</a>
-        <button class="btn btn-light shadow-sm rounded-circle" style="width:45px; height:45px; color: var(--primary);" onclick="window.UI.verBancos()" title="Ver Cuentas Bancarias"><i class="bi bi-bank2 fs-5"></i></button>
+        <button class="btn btn-light shadow-sm rounded-circle" style="width:45px; height:45px; color: var(--primary); border: 1px solid var(--primary);" onclick="window.UI.verBancos()" title="Ver Cuentas Bancarias"><i class="bi bi-bank2 fs-5"></i></button>
     </div>
   </div>
   
@@ -228,7 +239,7 @@
            </div>
            
            <div id="pos-placeholder" class="text-center text-muted py-5">
-               <i class="fas fa-keyboard fs-1 mb-2 opacity-50" style="color: var(--gold);"></i>
+               <i class="fas fa-keyboard fs-1 mb-2 opacity-50" style="color: var(--blue);"></i>
                <p>Inicie la búsqueda para agregar<br>productos al carrito de venta.</p>
            </div>
            <div id="pos-list"></div>
@@ -238,6 +249,7 @@
     </div>
 
     <div id="view-inv" class="view-sec" style="display:none; padding:15px;">
+      
       <ul class="nav nav-tabs mb-3" id="invTabs" role="tablist">
         <li class="nav-item" role="presentation"><button class="nav-link active" id="tab-tecnologia" data-bs-toggle="tab" data-bs-target="#pane-inv" type="button" role="tab" onclick="window.Inventory.setTab('Tecnologia')">Tecnología</button></li>
         <li class="nav-item" role="presentation"><button class="nav-link" id="tab-ropa" data-bs-toggle="tab" data-bs-target="#pane-inv" type="button" role="tab" onclick="window.Inventory.setTab('Ropa')">Ropa</button></li>
@@ -247,7 +259,7 @@
 
       <div class="scroll-menu">
         <input type="text" id="inv-search" class="form-control" placeholder="🔍 Buscar Referencia..." onkeyup="window.Inventory.render()" style="width: 150px;">
-        <select id="filter-prov" class="form-select" style="width: 150px; border-color: var(--gold);" onchange="window.Inventory.render()">
+        <select id="filter-prov" class="form-select" style="width: 150px; border-color: var(--blue);" onchange="window.Inventory.render()">
             <option value="">Todos los Proveedores</option>
         </select>
         <select id="filter-attr" class="form-select" style="width: 150px; border-color: var(--primary); display: none;" onchange="window.Inventory.render()">
@@ -259,13 +271,13 @@
 
         <button class="btn btn-primary" onclick="window.UI.abrirModalNuevo()" style="white-space: nowrap;">+ CREAR PRODUCTO</button>
         <button class="btn btn-info" onclick="window.UI.abrirModalProv()" title="Gestionar Proveedores" style="white-space: nowrap;"><i class="fas fa-users"></i> Proveedores</button>
-        <button class="btn btn-success" onclick="bootstrap.Modal.getOrCreateInstance(document.getElementById('modalWA')).show()" title="Importar desde Chat" style="white-space: nowrap;"><i class="fab fa-whatsapp"></i> Importar Chat</button>
       </div>
+      
       <div id="inv-list" class="catalog-grid"></div>
     </div>
 
     <div id="view-web" class="view-sec" style="display:none; padding:15px;">
-        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-globe" style="color: var(--gold);"></i> Administración Tienda Web</h5>
+        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-globe" style="color: var(--blue);"></i> Administración Tienda Web</h5>
         <input type="text" id="web-search" class="form-control mb-3" placeholder="🔍 Filtrar productos publicados..." onkeyup="window.Ecomm.render()">
         <div id="web-list"></div>
     </div>
@@ -290,7 +302,7 @@
           <h1 class="fw-bold display-4 my-1" id="bal-caja">...</h1>
       </div>
       
-      <div class="card-k mb-3" style="border: 2px dashed var(--gold);">
+      <div class="card-k mb-3" style="border: 2px dashed var(--blue);">
           <div class="d-flex justify-content-between align-items-center mb-2">
               <h6 class="fw-bold m-0"><i class="fas fa-check-double"></i> Conciliación de Caja (Auditoría)</h6>
               <span id="audit-res" class="small"></span>
@@ -319,7 +331,7 @@
                <select id="ab-cli" class="form-select mb-2"></select>
                <input type="number" id="ab-monto" class="form-control mb-2" placeholder="Monto Recibido">
                <label class="small text-muted fw-bold">Fecha del Pago:</label>
-               <input type="date" id="ab-fecha" class="form-control mb-2" style="border-color: var(--gold);">
+               <input type="date" id="ab-fecha" class="form-control mb-2" style="border-color: var(--blue);">
                <button class="btn btn-success w-100" onclick="window.Finance.doAbono()">CONFIRMAR RECAUDO</button>
             </div>
          </div>
@@ -327,20 +339,12 @@
             <div class="card-k">
                <h6 class="fw-bold" style="color: var(--primary);">Entrada de Dinero Extraordinaria</h6>
                <input type="text" id="inc-desc" class="form-control mb-2" placeholder="Concepto (Ej: Inversión, Préstamo)">
-               <select id="inc-cat" class="form-select mb-2" onchange="document.getElementById('box-prestamo').style.display = this.value === 'Prestamo' ? 'block' : 'none'">
+               <select id="inc-cat" class="form-select mb-2">
                    <option value="Venta Externa">Venta Externa</option>
                    <option value="Prestamo">Préstamo / Financiación</option>
                    <option value="Inyeccion Capital">Aporte de Capital</option>
                    <option value="Otros">Otros Ingresos</option>
                </select>
-               
-               <div id="box-prestamo" style="display:none; background:#fffcf5; padding:10px; border-radius:8px; border:1px solid var(--gold); margin-bottom:10px;">
-                   <label class="small fw-bold text-danger">¿A quién le debes este dinero? (Acreedor) *</label>
-                   <input type="text" id="inc-acreedor" class="form-control mb-2" placeholder="Ej: Banco, Gabriel, Inversionista">
-                   <label class="small fw-bold text-danger">Fecha Límite para pagar *</label>
-                   <input type="date" id="inc-fecha-limite" class="form-control">
-               </div>
-
                <input type="number" id="inc-monto" class="form-control mb-2" placeholder="Monto Ingresado">
                <button class="btn btn-primary w-100" onclick="window.Finance.doIngresoExtra()">REGISTRAR ENTRADA</button>
             </div>
@@ -349,14 +353,8 @@
             <div class="card-k">
                <h6 class="text-danger fw-bold">Salida de Dinero (Gasto/Costo)</h6>
                <input type="text" id="g-desc" class="form-control mb-2" placeholder="Concepto del Egreso">
-               <select id="g-cat" class="form-select mb-2"><option>Transporte / Logística</option><option>Alimentación</option><option>Costo Mercancia (Inventario)</option><option>Servicios Públicos</option><option>Nómina</option><option>Otros Gastos</option></select>
+               <select id="g-cat" class="form-select mb-2"><option>Transporte / Logística</option><option>Costo Mercancia</option><option>Servicios Públicos</option><option>Nómina</option><option>Otros</option></select>
                <input type="number" id="g-monto" class="form-control mb-2" placeholder="Valor Pagado">
-               <label class="small text-muted fw-bold mt-2">Vincular a Operación (Corrección de Costos):</label>
-               <input list="g-vinculo-list" id="g-vinculo" class="form-control mb-2 border-warning" style="border: 1px solid #ffc107;" placeholder="🔍 Escribe para buscar (Venta o Producto)...">
-               <small class="d-block mb-3 text-muted" style="font-size: 0.75rem;">
-                   * Si vinculas a una <b>Venta</b>, se recalculará su utilidad real.<br>
-                   * Si vinculas a un <b>Producto</b>, se actualizará su costo base en inventario.
-               </small>
                <button class="btn btn-danger w-100" onclick="window.Finance.doGasto()">REGISTRAR EGRESO</button>
             </div>
          </div>
@@ -374,103 +372,118 @@
   <button id="btn-float-cart" class="btn shadow" style="position:fixed; bottom:80px; right:20px; width:60px; height:60px; z-index:4000; display:none; font-size:1.5rem;" onclick="window.POS.toggleMobileCart()" title="Ver Carrito">🛒</button>
 
   <div class="nav-btm">
-    <button class="nav-btn active" onclick="window.UI.nav('pos',this)"><i class="fas fa-cash-register"></i><span>POS</span></button>
-    <button class="nav-btn" onclick="window.UI.nav('inv',this)"><i class="fas fa-box-open"></i><span>Inventario</span></button>
-    <button class="nav-btn" onclick="window.UI.nav('cartera',this)"><i class="fas fa-hand-holding-usd text-danger"></i><span class="text-danger">Cartera</span></button>
-    <button class="nav-btn" onclick="window.UI.nav('fin',this)"><i class="fas fa-chart-pie"></i><span>Finanzas</span></button>
-    <button class="nav-btn" onclick="window.UI.nav('web',this)"><i class="fas fa-cloud" style="color: var(--primary);"></i><span style="color: var(--primary);">E-Comm</span></button>
+    <button class="nav-btn active" onclick="window.UI.nav('pos',this)">
+        <i class="fas fa-cash-register"></i>
+        <span>POS</span>
+    </button>
+    <button class="nav-btn" onclick="window.UI.nav('inv',this)">
+        <i class="fas fa-box-open"></i>
+        <span>Inventario</span>
+    </button>
+    <button class="nav-btn" onclick="window.UI.nav('cartera',this)">
+        <i class="fas fa-hand-holding-usd text-danger"></i>
+        <span class="text-danger">Cartera</span>
+    </button>
+    <button class="nav-btn" onclick="window.UI.nav('fin',this)">
+        <i class="fas fa-chart-pie"></i>
+        <span>Finanzas</span>
+    </button>
+    <button class="nav-btn" onclick="window.UI.nav('web',this)">
+        <i class="fas fa-cloud" style="color: var(--primary);"></i>
+        <span style="color: var(--primary);">E-Comm</span>
+    </button>
   </div>
 
   <template id="tpl-cart">
-    <div class="cotizador-panel">
-       <div class="d-flex justify-content-between mb-2 align-items-center">
-         <h5 class="fw-bold m-0" style="color: var(--primary);">Resumen de Operación</h5>
-         <div>
-            <button class="btn btn-sm btn-light border fw-bold text-secondary me-1" onclick="window.POS.toggleMobileCart()">🔽 Ocultar</button>
-            <button class="btn btn-sm btn-outline-danger" onclick="window.POS.clearCart()">🗑️ Vaciar</button>
+      <div class="cotizador-panel">
+         <div class="d-flex justify-content-between mb-2 align-items-center">
+           <h5 class="fw-bold m-0" style="color: var(--primary);">Resumen de Operación</h5>
+           <div>
+              <button class="btn btn-sm btn-light border fw-bold text-secondary me-1" onclick="window.POS.toggleMobileCart()">🔽 Ocultar</button>
+              <button class="btn btn-sm btn-outline-danger" onclick="window.POS.clearCart()">🗑️ Vaciar</button>
+           </div>
          </div>
-       </div>
-       
-       <input id="c-concepto" class="form-control mb-2 fw-bold" placeholder="📝 Descripción del ítem no catalogado..." style="display:none; border-left:4px solid var(--gold);">
-
-       <div class="d-flex justify-content-between gap-2 mb-2" style="display:none !important;"> 
-         <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="c-iva" onchange="window.POS.calcCart()"><label class="form-check-label small fw-bold" for="c-iva">Aplicar IVA 19%</label></div>
-         <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="c-manual" onchange="window.POS.toggleManual()"><label class="form-check-label small fw-bold" for="c-manual">Precio Base Manual</label></div>
-       </div>
-       
-       <div id="cart-items-list" class="mb-3 mt-2" style="max-height:150px; overflow-y:auto;">No hay ítems seleccionados...</div>
-       
-       <div class="row g-2 mb-3">
-         <div class="col-3 text-center"><small>Margen %</small><input id="c-util" type="number" class="input-line" value="30" oninput="window.POS.calcCart()"></div>
-         <div class="col-3 text-center"><small>Desc. %</small><input id="c-desc" type="number" class="input-line text-danger" value="0" oninput="window.POS.calcCart()"></div>
-         <div class="col-3 text-center"><small>Tasa Int.%</small><input id="c-int" type="number" class="input-line" value="5" oninput="window.POS.calcCart()"></div>
-         <div class="col-3 text-center"><small>Plazo (M)</small><input id="c-cuotas" type="number" class="input-line" value="1" oninput="window.POS.calcCart()"></div>
-       </div>
-       
-       <label class="small fw-bold text-muted mt-2">Fecha de Registro:</label>
-       <input type="date" id="c-fecha" class="form-control mb-3" style="border-color: var(--gold);">
-
-       <div class="alert alert-light border text-center py-2 mb-3" style="background-color: #fffcf5; border-color: var(--gold) !important;">
-          <div id="row-descuento" style="display:none; color: #e74c3c; font-size: 0.85rem; margin-bottom: 5px;">
-              <div class="d-flex justify-content-between"><span>Descuento Aplicado:</span><strong id="res-desc-val">-$0</strong></div>
-          </div>
-          
-          <div class="d-flex justify-content-between align-items-center">
-             <span>Valor Total Venta:</span>
-             <div class="text-end">
-                <strong id="res-cont" class="fs-5" style="color: var(--primary);">$0</strong>
-                <input id="res-cont-input" type="number" class="form-control form-control-sm fw-bold text-end" style="display:none; color: var(--primary); border-color: var(--gold);" placeholder="Monto Base ($)" oninput="window.POS.calcCart()">
-             </div>
-          </div>
-          <div id="row-cred" style="display:none; border-top:1px dashed var(--gold); margin-top:5px; padding-top:5px;">
-             <div class="d-flex justify-content-between" style="color: var(--primary);"><span>Cuota Inicial (30%):</span><strong id="res-ini">$0</strong></div>
-             <div class="d-flex justify-content-between mt-1" style="color: var(--gold-hover);"><span>Saldo a Financiar:</span><strong id="res-cuota-val">$0</strong> <small id="res-cuota-txt">/ mes</small></div>
-          </div>
-          
-          <div class="mt-2 text-end" style="border-top: 1px dotted #ccc; padding-top:5px;">
-             <small class="text-muted" style="font-size:0.7rem;">Anular intereses (Precio Fijo Manual)</small>
-             <input id="c-target" type="number" class="form-control form-control-sm fw-bold text-end" style="border-color: var(--gold); background: #fffffa;" placeholder="💲 Precio Final Pactado" oninput="window.POS.calcCart()">
-          </div>
-       </div>
-       
-       <input id="c-cliente" class="form-control mb-2" placeholder="Nombre del Cliente / Razón Social">
-       
-       <div class="text-end mb-2">
-          <a href="#" onclick="window.toggleDatosFormales(); return false;" class="small text-muted" style="text-decoration: none;">⚙️ Añadir datos formales (NIT, Tel)</a>
-       </div>
-       <div id="box-datos-formales" style="display:none; background:#f8f9fa; padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid #ddd;">
-          <input id="c-nit" class="form-control form-control-sm mb-2" placeholder="NIT / Cédula">
-          <input id="c-tel" class="form-control form-control-sm" placeholder="Teléfono / WhatsApp">
-       </div>
-
-       <select id="c-metodo" class="form-select mb-2" onchange="window.POS.toggleIni()"><option value="Contado">Pago de Contado</option><option value="Crédito">Venta a Crédito</option></select>
-       <input id="c-inicial" type="number" class="form-control mb-3" placeholder="Monto Inicial Personalizado" disabled style="display:none; background:#e9ecef;">
-       
-       <div id="box-vip" class="form-check form-switch mb-3 border p-2 rounded" style="background-color: #fffcf5; border-color: var(--gold) !important; display: none;">
-           <input class="form-check-input" type="checkbox" id="c-eximir" onchange="window.POS.calcCart()">
-           <label class="form-check-label small fw-bold" for="c-eximir" style="color: var(--gold-hover);">⭐ Eximir Cuota Inicial</label>
-       </div>
-       
-       <div class="form-check form-switch mb-3 border p-2 rounded" style="background-color: #f8f9fa; border-color: #eee;">
-           <input class="form-check-input" type="checkbox" id="c-incluir-desc">
-           <label class="form-check-label small fw-bold text-muted" for="c-incluir-desc" style="margin-top: 2px;"><i class="fas fa-list text-secondary"></i> Incluir Descripción en Cotización</label>
-       </div>
-
-       <div class="d-flex gap-2 mb-2">
-           <button class="btn btn-outline-info flex-fill fw-bold" onclick="window.POS.guardarCotizacionActual()" title="Guardar Cotización">💾 GUARDAR</button>
-           <button class="btn btn-dark flex-fill fw-bold text-white" onclick="window.POS.generarCotizacionPDF()" title="Generar PDF Formal">📄 PDF</button>
-           <button class="btn btn-success flex-fill fw-bold" onclick="window.POS.shareQuote()"><i class="fab fa-whatsapp"></i> WSP</button>
-       </div>
-       <button id="btn-vender-main" class="btn btn-primary w-100 fw-bold fs-6 py-2" onclick="window.POS.finalizarVenta()">✅ VENDER / FACTURAR</button>
-    </div>
+         
+         <input id="c-concepto" class="form-control mb-2 fw-bold" placeholder="📝 Descripción del ítem no catalogado..." style="display:none; border-left:4px solid var(--blue);">
+  
+         <div class="d-flex justify-content-between gap-2 mb-2" style="display:none !important;"> 
+           <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="c-iva" onchange="window.POS.calcCart()"><label class="form-check-label small fw-bold" for="c-iva">Aplicar IVA 19%</label></div>
+           <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="c-manual" onchange="window.POS.toggleManual()"><label class="form-check-label small fw-bold" for="c-manual">Precio Base Manual</label></div>
+         </div>
+         
+         <div id="cart-items-list" class="mb-3 mt-2" style="max-height:150px; overflow-y:auto;">No hay ítems seleccionados...</div>
+         
+         <div class="row g-2 mb-3">
+           <div class="col-3 text-center"><small>Margen %</small><input id="c-util" type="number" class="input-line" value="30" oninput="window.POS.calcCart()"></div>
+           <div class="col-3 text-center"><small>Desc. %</small><input id="c-desc" type="number" class="input-line text-danger" value="0" oninput="window.POS.calcCart()"></div>
+           <div class="col-3 text-center"><small>Tasa Int.%</small><input id="c-int" type="number" class="input-line" value="5" oninput="window.POS.calcCart()"></div>
+           <div class="col-3 text-center"><small>Plazo (M)</small><input id="c-cuotas" type="number" class="input-line" value="1" oninput="window.POS.calcCart()"></div>
+         </div>
+         
+         <label class="small fw-bold text-muted mt-2">Fecha de Registro:</label>
+         <input type="date" id="c-fecha" class="form-control mb-3" style="border-color: var(--blue);">
+  
+         <div class="alert alert-light border text-center py-2 mb-3" style="background-color: #f0f8ff; border-color: var(--blue) !important;">
+            <div id="row-descuento" style="display:none; color: #e74c3c; font-size: 0.85rem; margin-bottom: 5px;">
+                <div class="d-flex justify-content-between"><span>Descuento Aplicado:</span><strong id="res-desc-val">-$0</strong></div>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center">
+               <span>Valor Total Venta:</span>
+               <div class="text-end">
+                  <strong id="res-cont" class="fs-5" style="color: var(--primary);">$0</strong>
+                  <input id="res-cont-input" type="number" class="form-control form-control-sm fw-bold text-end" style="display:none; color: var(--primary); border-color: var(--blue);" placeholder="Monto Base ($)" oninput="window.POS.calcCart()">
+               </div>
+            </div>
+            <div id="row-cred" style="display:none; border-top:1px dashed var(--blue); margin-top:5px; padding-top:5px;">
+               <div class="d-flex justify-content-between" style="color: var(--primary);"><span>Cuota Inicial (30%):</span><strong id="res-ini">$0</strong></div>
+               <div class="d-flex justify-content-between mt-1" style="color: var(--blue-hover);"><span>Saldo a Financiar:</span><strong id="res-cuota-val">$0</strong> <small id="res-cuota-txt">/ mes</small></div>
+            </div>
+            
+            <div class="mt-2 text-end" style="border-top: 1px dotted #ccc; padding-top:5px;">
+               <small class="text-muted" style="font-size:0.7rem;">Anular intereses (Precio Fijo Manual)</small>
+               <input id="c-target" type="number" class="form-control form-control-sm fw-bold text-end" style="border-color: var(--blue); background: #f4f9ff;" placeholder="💲 Precio Final Pactado" oninput="window.POS.calcCart()">
+            </div>
+         </div>
+         
+         <input id="c-cliente" class="form-control mb-2" placeholder="Nombre del Cliente / Razón Social">
+         
+         <div class="text-end mb-2">
+            <a href="#" onclick="window.toggleDatosFormales(); return false;" class="small text-muted" style="text-decoration: none;">⚙️ Añadir datos formales (NIT, Tel)</a>
+         </div>
+         <div id="box-datos-formales" style="display:none; background:#f8f9fa; padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid #ddd;">
+            <input id="c-nit" class="form-control form-control-sm mb-2" placeholder="NIT / Cédula">
+            <input id="c-tel" class="form-control form-control-sm" placeholder="Teléfono / WhatsApp">
+         </div>
+  
+         <select id="c-metodo" class="form-select mb-2" onchange="window.POS.toggleIni()"><option value="Contado">Pago de Contado</option><option value="Crédito">Venta a Crédito</option></select>
+         <input id="c-inicial" type="number" class="form-control mb-3" placeholder="Monto Inicial Personalizado" disabled style="display:none; background:#e9ecef;">
+         
+         <div id="box-vip" class="form-check form-switch mb-3 border p-2 rounded" style="background-color: #f0f8ff; border-color: var(--blue) !important; display: none;">
+             <input class="form-check-input" type="checkbox" id="c-eximir" onchange="window.POS.calcCart()">
+             <label class="form-check-label small fw-bold" for="c-eximir" style="color: var(--blue-hover);">⭐ Eximir Cuota Inicial</label>
+         </div>
+         
+         <div class="form-check form-switch mb-3 border p-2 rounded" style="background-color: #f8f9fa; border-color: #eee;">
+             <input class="form-check-input" type="checkbox" id="c-incluir-desc">
+             <label class="form-check-label small fw-bold text-muted" for="c-incluir-desc" style="margin-top: 2px;"><i class="fas fa-list text-secondary"></i> Incluir Descripción en Cotización</label>
+         </div>
+  
+         <div class="d-flex gap-2 mb-2">
+             <button class="btn btn-outline-info flex-fill fw-bold" onclick="window.POS.guardarCotizacionActual()" title="Guardar Cotización">💾 GUARDAR</button>
+             <button class="btn btn-dark flex-fill fw-bold text-white" onclick="window.POS.generarCotizacionPDF()" title="Generar PDF Formal">📄 PDF</button>
+             <button class="btn btn-success flex-fill fw-bold" onclick="window.POS.shareQuote()"><i class="fab fa-whatsapp"></i> WSP</button>
+         </div>
+         <button id="btn-vender-main" class="btn btn-primary w-100 fw-bold fs-6 py-2" onclick="window.POS.finalizarVenta()">✅ VENDER / FACTURAR</button>
+      </div>
   </template>
 
   <div class="modal fade" id="modalLoginApp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-body text-center p-5">
-            <div style="font-size: 3rem; color: var(--gold);"><i class="fas fa-shield-alt"></i></div>
-            <h4 class="fw-bold mt-3" style="color: var(--primary);">Seguridad King's Shop</h4>
+            <div style="font-size: 3rem; color: var(--blue);"><i class="fas fa-shield-alt"></i></div>
+            <h4 class="fw-bold mt-3" style="color: var(--primary);">Seguridad Comercial</h4>
             <p class="text-muted small mb-4">Para utilizar el sistema, registra tu identidad operativa.</p>
             <input type="text" id="login-alias" class="form-control form-control-lg text-center fw-bold mb-3 border-dark" placeholder="Tu Nombre o Alias">
             <button class="btn btn-dark btn-lg w-100 fw-bold" onclick="window.App.guardarIdentidad()">ACCEDER AL SISTEMA</button>
@@ -544,14 +557,14 @@
                     <div class="col-6"><label class="small fw-bold">Categoría</label><input list="list-cats" id="inp-edit-categoria" class="form-control"></div>
                     <div class="col-6"><label class="small fw-bold">Costo Unitario</label><input type="number" id="inp-edit-costo" class="form-control" oninput="calcGain('inp-edit-costo','inp-edit-publico','inp-edit-margen')"></div>
                 </div>
-                <div class="row g-2 mb-2 p-2 bg-light border rounded" style="border-color: var(--gold) !important; margin: 0;">
+                <div class="row g-2 mb-2 p-2 bg-light border rounded" style="border-color: var(--blue) !important; margin: 0;">
                     <div class="col-4">
                         <label class="small fw-bold" style="color: var(--primary);">Margen (%)</label>
-                        <input type="number" id="inp-edit-margen" class="form-control" value="30" oninput="calcGain('inp-edit-costo','inp-edit-publico','inp-edit-margen')" style="border-color: var(--gold); font-weight: bold;">
+                        <input type="number" id="inp-edit-margen" class="form-control" value="30" oninput="calcGain('inp-edit-costo','inp-edit-publico','inp-edit-margen')" style="border-color: var(--blue); font-weight: bold;">
                     </div>
                     <div class="col-8">
                         <label class="small fw-bold" style="color: var(--primary);">Precio Público Final</label>
-                        <input type="number" id="inp-edit-publico" class="form-control" placeholder="0 = Auto-cálculo" oninput="calcMargen('inp-edit-costo','inp-edit-publico','inp-edit-margen')" style="border-color: var(--gold); color: var(--primary); font-weight: bold;">
+                        <input type="number" id="inp-edit-publico" class="form-control" placeholder="0 = Auto-cálculo" oninput="calcMargen('inp-edit-costo','inp-edit-publico','inp-edit-margen')" style="border-color: var(--blue); color: var(--primary); font-weight: bold;">
                     </div>
                 </div>
                 <div class="mb-2"><label class="small fw-bold">Proveedor Asignado</label><input list="list-provs-all" id="inp-edit-proveedor" class="form-control"></div>
@@ -575,7 +588,7 @@
                     <input type="file" id="inp-file-foto" accept="image/*" onchange="previewFile()" class="file-input-overlay">
                     <img id="img-preview-box" class="preview-img">
                     <div class="placeholder-text text-center text-muted">
-                        <div style="font-size:2rem; color: var(--gold);">📷</div>
+                        <div style="font-size:2rem; color: var(--blue);">📷</div>
                         <div>Tocar para actualizar imagen</div>
                     </div>
                 </div>
@@ -604,14 +617,14 @@
                         <div class="col-6"><label class="small fw-bold">Categoría</label><input list="list-cats" id="new-categoria" class="form-control" onchange="generarIDAuto()"></div>
                         <div class="col-6"><label class="small fw-bold">Costo Base</label><input type="number" id="new-costo" class="form-control" oninput="calcGain('new-costo','new-publico','new-margen')"></div>
                     </div>
-                    <div class="row g-2 mb-2 p-2 bg-light border rounded" style="border-color: var(--gold) !important; margin: 0;">
+                    <div class="row g-2 mb-2 p-2 bg-light border rounded" style="border-color: var(--blue) !important; margin: 0;">
                         <div class="col-4">
                             <label class="small fw-bold" style="color: var(--primary);">Margen (%)</label>
-                            <input type="number" id="new-margen" class="form-control" value="30" oninput="calcGain('new-costo','new-publico','new-margen')" style="border-color: var(--gold); font-weight: bold;">
+                            <input type="number" id="new-margen" class="form-control" value="30" oninput="calcGain('new-costo','new-publico','new-margen')" style="border-color: var(--blue); font-weight: bold;">
                         </div>
                         <div class="col-8">
                             <label class="small fw-bold" style="color: var(--primary);">Precio Venta Final</label>
-                            <input type="number" id="new-publico" class="form-control" oninput="calcMargen('new-costo','new-publico','new-margen')" style="border-color: var(--gold); color: var(--primary); font-weight: bold;">
+                            <input type="number" id="new-publico" class="form-control" oninput="calcMargen('new-costo','new-publico','new-margen')" style="border-color: var(--blue); color: var(--primary); font-weight: bold;">
                         </div>
                     </div>
                     <div class="mb-2"><label class="small fw-bold">Proveedor</label><input list="list-provs-all" id="new-proveedor" class="form-control"></div>
@@ -638,7 +651,7 @@
                     </div>
                     <div class="d-flex gap-2 mt-3">
                         <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary w-50 fw-bold" style="color: var(--gold);">Confirmar</button>
+                        <button type="submit" class="btn btn-primary w-50 fw-bold" style="color: var(--blue);">Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -679,7 +692,7 @@
                 <label class="small fw-bold">Concepto Original</label>
                 <input id="ed-mov-desc" class="form-control mb-2" disabled style="background-color: #e9ecef;">
                 <label class="small fw-bold">Fecha Contable Real</label>
-                <input type="date" id="ed-mov-fecha" class="form-control mb-2" style="border-color: var(--gold);">
+                <input type="date" id="ed-mov-fecha" class="form-control mb-2" style="border-color: var(--blue);">
                 <label class="small fw-bold">Monto Corregido</label>
                 <input type="number" id="ed-mov-monto" class="form-control mb-3" style="font-weight: bold; color: var(--primary);">
                 <label class="small fw-bold text-danger">Justificación del Cambio (Obligatoria) *</label>
@@ -761,7 +774,7 @@
                 </div>
                 <div class="alert alert-light border text-center mb-3">
                     <small class="text-muted">Precio Unitario Final (Calculado):</small><br>
-                    <strong id="edit-item-total" class="fs-4" style="color: var(--gold-hover);">$0</strong>
+                    <strong id="edit-item-total" class="fs-4" style="color: var(--blue-hover);">$0</strong>
                 </div>
                 <div class="mb-3 border-top pt-3">
                     <label class="form-label text-success fw-bold">Precio Final Pactado ($):</label>
@@ -859,6 +872,7 @@
           }); 
       };
   </script>
+  
   <script type="module" src="./js/app.js"></script>
 
 </body>
