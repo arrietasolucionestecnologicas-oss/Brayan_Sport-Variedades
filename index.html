@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
   <style>
-    /* --- TEMA BRYAN SPORT: BLUE, BLACK & WHITE --- */
     :root { 
         --primary: #000000; 
         --blue: #63B8FF; 
@@ -204,9 +203,9 @@
     .nav-pills .nav-link.active { background-color: var(--primary) !important; color: var(--blue) !important; }
     .nav-pills .nav-link { color: var(--primary) !important; }
 
-    /* Estilos para pestañas de Inventario */
     .nav-tabs .nav-link { color: var(--dark); font-weight: 500; }
     .nav-tabs .nav-link.active { color: var(--primary); font-weight: bold; border-bottom: 3px solid var(--blue); }
+    #modalEditItem { z-index: 6000 !important; }
   </style>
 </head>
 <body>
@@ -240,7 +239,7 @@
            
            <div id="pos-placeholder" class="text-center text-muted py-5">
                <i class="fas fa-keyboard fs-1 mb-2 opacity-50" style="color: var(--blue);"></i>
-               <p>Inicie la búsqueda para agregar<br>productos al carrito de venta.</p>
+               <p>Inicie la búsqueda para agregar<br>productos a la caja.</p>
            </div>
            <div id="pos-list"></div>
         </div>
@@ -277,7 +276,7 @@
     </div>
 
     <div id="view-web" class="view-sec" style="display:none; padding:15px;">
-        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-globe" style="color: var(--blue);"></i> Administración Tienda Web</h5>
+        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-globe" style="color: var(--blue);"></i> Portal de Tienda Web</h5>
         <input type="text" id="web-search" class="form-control mb-3" placeholder="🔍 Filtrar productos publicados..." onkeyup="window.Ecomm.render()">
         <div id="web-list"></div>
     </div>
@@ -287,7 +286,7 @@
             <small class="opacity-75" style="color:white;">Cuentas por Cobrar (Total Deuda)</small>
             <h1 class="fw-bold display-4 my-1" id="bal-cartera">...</h1>
         </div>
-        <h6 class="fw-bold text-muted mb-3">Cartera de Clientes Activa</h6>
+        <h6 class="fw-bold text-muted mb-3">Cartera de Créditos Activa</h6>
         <div id="cartera-list"></div>
     </div>
 
@@ -298,7 +297,7 @@
           <button class="btn btn-light btn-sm mt-2 fw-bold" onclick="window.Finance.abrirModalPasivos()" style="color: #8b0000;">PAGAR OBLIGACIONES</button>
       </div>
       <div class="card-balance">
-          <small class="opacity-75">Flujo de Caja Disponible (Sistema)</small>
+          <small class="opacity-75">Flujo de Caja Disponible (Balance Total)</small>
           <h1 class="fw-bold display-4 my-1" id="bal-caja">...</h1>
       </div>
       
@@ -339,12 +338,20 @@
             <div class="card-k">
                <h6 class="fw-bold" style="color: var(--primary);">Entrada de Dinero Extraordinaria</h6>
                <input type="text" id="inc-desc" class="form-control mb-2" placeholder="Concepto (Ej: Inversión, Préstamo)">
-               <select id="inc-cat" class="form-select mb-2">
+               <select id="inc-cat" class="form-select mb-2" onchange="document.getElementById('box-prestamo').style.display = this.value === 'Prestamo' ? 'block' : 'none'">
                    <option value="Venta Externa">Venta Externa</option>
                    <option value="Prestamo">Préstamo / Financiación</option>
                    <option value="Inyeccion Capital">Aporte de Capital</option>
                    <option value="Otros">Otros Ingresos</option>
                </select>
+               
+               <div id="box-prestamo" style="display:none; background:#fffcf5; padding:10px; border-radius:8px; border:1px solid var(--blue); margin-bottom:10px;">
+                   <label class="small fw-bold text-danger">¿A quién le debes este dinero? (Acreedor) *</label>
+                   <input type="text" id="inc-acreedor" class="form-control mb-2" placeholder="Ej: Banco, Gabriel, Inversionista">
+                   <label class="small fw-bold text-danger">Fecha Límite para pagar *</label>
+                   <input type="date" id="inc-fecha-limite" class="form-control">
+               </div>
+
                <input type="number" id="inc-monto" class="form-control mb-2" placeholder="Monto Ingresado">
                <button class="btn btn-primary w-100" onclick="window.Finance.doIngresoExtra()">REGISTRAR ENTRADA</button>
             </div>
@@ -355,6 +362,12 @@
                <input type="text" id="g-desc" class="form-control mb-2" placeholder="Concepto del Egreso">
                <select id="g-cat" class="form-select mb-2"><option>Transporte / Logística</option><option>Costo Mercancia</option><option>Servicios Públicos</option><option>Nómina</option><option>Otros</option></select>
                <input type="number" id="g-monto" class="form-control mb-2" placeholder="Valor Pagado">
+               <label class="small text-muted fw-bold mt-2">Vincular a Operación (Corrección de Costos):</label>
+               <input list="g-vinculo-list" id="g-vinculo" class="form-control mb-2 border-warning" style="border: 1px solid #ffc107;" placeholder="🔍 Escribe para buscar (Venta o Producto)...">
+               <small class="d-block mb-3 text-muted" style="font-size: 0.75rem;">
+                   * Si vinculas a una <b>Venta</b>, se recalculará su utilidad real.<br>
+                   * Si vinculas a un <b>Producto</b>, se actualizará su costo base en inventario.
+               </small>
                <button class="btn btn-danger w-100" onclick="window.Finance.doGasto()">REGISTRAR EGRESO</button>
             </div>
          </div>
@@ -373,24 +386,24 @@
 
   <div class="nav-btm">
     <button class="nav-btn active" onclick="window.UI.nav('pos',this)">
-        <i class="fas fa-cash-register"></i>
-        <span>POS</span>
+        <i class="fas fa-shopping-bag"></i>
+        <span>Caja</span>
     </button>
     <button class="nav-btn" onclick="window.UI.nav('inv',this)">
-        <i class="fas fa-box-open"></i>
-        <span>Inventario</span>
+        <i class="fas fa-tags"></i>
+        <span>Catálogo</span>
     </button>
     <button class="nav-btn" onclick="window.UI.nav('cartera',this)">
-        <i class="fas fa-hand-holding-usd text-danger"></i>
-        <span class="text-danger">Cartera</span>
+        <i class="fas fa-file-invoice-dollar text-danger"></i>
+        <span class="text-danger">Créditos</span>
     </button>
     <button class="nav-btn" onclick="window.UI.nav('fin',this)">
-        <i class="fas fa-chart-pie"></i>
-        <span>Finanzas</span>
+        <i class="fas fa-wallet"></i>
+        <span>Balance</span>
     </button>
     <button class="nav-btn" onclick="window.UI.nav('web',this)">
-        <i class="fas fa-cloud" style="color: var(--primary);"></i>
-        <span style="color: var(--primary);">E-Comm</span>
+        <i class="fas fa-store-alt" style="color: var(--primary);"></i>
+        <span style="color: var(--primary);">Portal Web</span>
     </button>
   </div>
 
@@ -873,6 +886,7 @@
       };
   </script>
   
+  <script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js'); }); }</script>
   <script type="module" src="./js/app.js"></script>
 
 </body>
